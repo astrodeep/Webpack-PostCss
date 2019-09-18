@@ -1,13 +1,11 @@
-# Webpack + Vue
+# Webpack + Post-Css
 
 # Download
 <a href="https://github.com/coreybutler/nvm-windows/releases">Node Version Manager (nvm) for Windows</a>
 
 # Install
-
 <code>nvm install 10.16.3</code> or later<br/>
 <code>nvm use 10.16.3 </code>or later<br/>
-<code>npm install gulp-cli -g</code><br/>
 <code>npm i -g yarn</code><br/>
 <code>npm i -g webpack</code>
 
@@ -15,11 +13,16 @@
  
  <code>yarn run dev</code><br/>
  
+ 
 # Deployment Progect
  
  <code>yarn run build</code><br/>
  
+ # Watch and Deployment Progect
+  
+  <code>yarn run watch</code><br/>
  
+
 # Adding a dependency
 
 <code>yarn add [package]</code><br/>
@@ -39,4 +42,4 @@
 #  Updates npm
 
 <code>npm update --save</code><br/>
-"# Webpack-Vue" 
+ 
