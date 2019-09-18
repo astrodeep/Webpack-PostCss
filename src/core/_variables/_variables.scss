@@ -1,0 +1,167 @@
+// Base Color
+$colorGray: #eff0f0;
+$colorDarkPurple: #484357;
+$colorPink: #e4245d;
+$colorGreen: #6cbb00;
+$colorBlue: #00b2ee;
+$colorYellow: #ffe326;
+
+// Color
+$colorExtraLightGray: #f9f9f9;
+$colorLightGray: #f7f7f7;
+
+$colorDarkGray: #e6e7e8;
+$colorExtraDarkGray: #9fa8b0;
+$colorExtraExtraLightPurple: #dfd6ef;
+$colorExtraLightPurple: #98969d;
+$colorLightPurple: #86838d;
+$colorLightPurple2:#5d586c;
+$colorExtraDarkPurple: #363244;
+$colorLightPink: #e9507d;
+$colorLightYellow: #f4eaa6;
+$colorBlueGreen: #085774;
+$colorDarkPink: #e31a49;
+
+// Radius
+$radiusSmall: 5px;
+
+
+
+$portrait-phones: 575.98px;
+$landscape-phones: 767.98px;
+$portrait: 576px;
+$landscape: 768px;
+$tablets: 950px;
+$desctop-sm: 1199px;
+$desctop: 1490px;
+$desctop-lg: 1279px;
+$desctop-xs: 1060px;
+
+
+@mixin max-width-desctop-lg {
+  @media (max-width: #{$desctop-lg}) {
+    @content;
+  }
+}
+
+
+@mixin max-width-desctop-sm {
+  @media (max-width: #{$desctop-sm}) {
+    @content;
+  }
+}
+
+
+@mixin max-width-portrait {
+  @media (max-width: #{$portrait}) {
+    @content;
+  }
+}
+
+
+@mixin max-width-desctop-xs {
+  @media (max-width: #{$desctop-xs}) {
+    @content;
+  }
+}
+@mixin mobail-sm {
+  @media (max-width: #{$portrait-phones}) {
+    @content;
+  }
+}
+
+
+
+
+
+@mixin max-width-landscape-phones {
+  @media (max-width: #{$landscape-phones}) {
+    @content;
+  }
+}
+
+
+@mixin max-width-desctop {
+  @media (max-width: #{$desctop}) {
+    @content;
+  }
+}
+
+@mixin max-width-tablets {
+  @media (max-width: #{$tablets}) {
+    @content;
+  }
+}
+
+@mixin mobile-lg {
+  @media (min-width: #{$portrait}) and (max-width: #{$landscape-phones - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablets {
+  @media (min-width: #{$landscape}) and (max-width: #{$tablets - 1px}) {
+    @content;
+  }
+}
+
+
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function calcFluidFontSize($f-min, $f-max, $w-min, $w-max, $units: px) {
+  $f-min: strip-unit($f-min);
+  $f-max: strip-unit($f-max);
+  $w-min: strip-unit($w-min);
+  $w-max: strip-unit($w-max);
+
+  $k: ($f-max - $f-min)/($w-max - $w-min);
+  $b: $f-min - $k * $w-min;
+
+  $b: $b + $units;
+
+  @return calc( #{$k} * 100vw + #{$b} );
+}
+
+@mixin fluidFontSize($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+  font-size: $f-min;
+
+  @media (min-width: $w-min) {
+    @if ($fallback) {
+      font-size: $fallback;
+    }
+    font-size: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+  }
+  @media (min-width: $w-max) {
+    font-size: $f-max;
+  }
+}
+
+
+.button:click .back{
+
+  @action toggle-class("animated bounce");
+
+}
+
+
+.back{
+  width: 250px;
+  height: 250px;
+  margin-left: -250px;
+  background: url('data:image/svg+xml, <svg width="200" height="250" version="1.1" xmlns="http://www.w3.org/2000/svg">  <rect x="10" y="10" width="30" height="30" stroke="black" fill="transparent" stroke-width="5"/> <rect x="60" y="10" rx="10" ry="10" width="30" height="30" stroke="black" fill="transparent" stroke-width="5"/> <circle cx="25" cy="75" r="20" stroke="red" fill="transparent" stroke-width="5"/> <ellipse cx="75" cy="75" rx="20" ry="5" stroke="red" fill="transparent" stroke-width="5"/> <line x1="10" x2="50" y1="110" y2="150" stroke="orange" fill="transparent" stroke-width="5"/> <polyline points="60 110 65 120 70 115 75 130 80 125 85 140 90 135 95 150 100 145" stroke="orange" fill="transparent" stroke-width="5"/> <polygon points="50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180" stroke="green" fill="transparent" stroke-width="5"/> <path d="M20,230 Q40,205 50,230 T90,230" fill="none" stroke="blue" stroke-width="5"/></svg>') no-repeat;
+}
+
+.bounce{
+  animation-name: fadeInLeft;
+  margin-left: 100px; animation: fadeInLeft .6s linear;
+}
+
+
