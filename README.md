@@ -9,11 +9,6 @@
 <code>npm i -g yarn</code><br/>
 <code>npm i -g webpack</code>
 
- #  Updates npm Progect
- is folder
- <code>npx npm-check-updates -u</code>  or  <code>npm-check-updates -u</code> <br/>
-global
- <code>npm-check-updates -u</code> 
  
 # Run Progect
  
