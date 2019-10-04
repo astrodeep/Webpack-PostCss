@@ -54,7 +54,6 @@ let conf = {
                         options: {
                             plugins: [
                                 autoprefixer({
-                                    browsers: ['ie >= 8', 'last 4 version']
                                 }),
                                 postcssclick(),
                                 cssnext(),
