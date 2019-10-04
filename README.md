@@ -10,9 +10,10 @@
 <code>npm i -g webpack</code>
 
  #  Updates npm Progect
- <code>npx npm-check-updates -u</code> 
- or<br/>
- <code>npm update --save</code> 
+ is folder
+ <code>npx npm-check-updates -u</code>  or  <code>npm-check-updates -u</code> <br/>
+global
+ <code>npm-check-updates -u</code> 
  
 # Run Progect
  
