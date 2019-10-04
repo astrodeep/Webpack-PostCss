@@ -9,6 +9,11 @@
 <code>npm i -g yarn</code><br/>
 <code>npm i -g webpack</code>
 
+ #  Updates npm Progect
+ <code>npx npm-check-updates -u</code> 
+ or<br/>
+ <code>npm update --save</code> 
+ 
 # Run Progect
  
  <code>yarn run dev</code><br/>
@@ -39,7 +44,5 @@
 
 <code>yarn remove [package]</code>
 
-#  Updates npm
 
-<code>npm update --save</code><br/>
- 
+
