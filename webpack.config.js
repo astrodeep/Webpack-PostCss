@@ -34,9 +34,14 @@ let conf = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
-                loader: "babel-loader",
-                exclude: "/node_modules/"
+                test: /\.m?js$/,
+                exclude: "/node_modules/",
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
             },
             {
                 test: /\.(sa|sc|c)ss$/,
@@ -45,7 +50,6 @@ let conf = {
                     {
                         loader: "css-loader",
                         options: {
-                            hmr: process.env.NODE_ENV === 'development',
                             sourceMap: true,
                         }
                     },
@@ -53,8 +57,6 @@ let conf = {
                         loader: 'postcss-loader',
                         options: {
                             plugins: [
-                                autoprefixer({
-                                }),
                                 postcssclick(),
                                 cssnext(),
                                 backgroundSvg(),
@@ -66,8 +68,10 @@ let conf = {
                     {
                         loader: 'sass-loader',
                         options: {
-                            importer: globImporter(),
-                            sourceMap: true,
+                            sassOptions: {
+                                importer: globImporter(),
+                                sourceMap: true,
+                            }
                         }
                     }
                 ],

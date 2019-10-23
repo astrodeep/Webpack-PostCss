@@ -1,3 +1,3 @@
-@import "core/**/*.scss";
-/*
-@import "cabinet.blocks!**!*.scss";*/
+
+// Import all files inside the `scss` directory and subdirectories.
+@import 'core/**/*.scss';
