@@ -17,15 +17,21 @@ let OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 let conf = {
 
-    mode: 'production',
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'main.js'
+        filename: 'js/main.js'
 
     },
+    devtool: "source-map",
+    mode: "production",
     optimization: {
-        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+        minimizer: [
+            new TerserJSPlugin({
+                sourceMap: true,
+                extractComments: true
+            })
+        ]
     },
     devServer: {
         overlay: true,
@@ -46,11 +52,15 @@ let conf = {
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {}
+                    },
                     {
                         loader: "css-loader",
                         options: {
                             sourceMap: true,
+                            url: false
                         }
                     },
                     {
@@ -70,8 +80,9 @@ let conf = {
                         options: {
                             sassOptions: {
                                 importer: globImporter(),
-                                sourceMap: true,
-                            }
+
+                            },
+                            sourceMap: true
                         }
                     }
                 ],
@@ -84,40 +95,12 @@ let conf = {
                     pretty: true
                 }
             },
-
-            {
-                test: /\.(gif|png|jpe?g|svg)$/i,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]'
-                },
-            },
-            {
-                loader: 'image-webpack-loader',
-                options: {
-                    mozjpeg: {
-                        progressive: true,
-                        quality: 70
-                    }
-                }
-            },
-
-            {
-                test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]'
-                    }
-                }]
-            }
-
         ]
 
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'main.css'
+            filename: 'css/main.css'
         }),
         new HtmlWebpackPlugin({
             template: './src/index.pug'
@@ -128,15 +111,11 @@ let conf = {
             "window.jQuery": "jquery"
         }),
         new CopyPlugin([
-            {from: 'src/images', to: 'images'},
-            {from: 'src/fonts', to: 'fonts'}
+            {from: './src/images', to: './images'},
+            {from: './src/fonts', to: './fonts'}
         ]),
     ]
 
 };
 
 module.exports = conf;
-
-
-
-
