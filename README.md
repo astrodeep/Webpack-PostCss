@@ -42,3 +42,9 @@
 
 
 
+# Updates npm
+
+<code>npm i -g npm-check-updates</code>
+<br/><br/>
+is folder
+<code>npm-check-updates -u</code>
