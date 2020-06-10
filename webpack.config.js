@@ -110,10 +110,13 @@ let conf = {
             jQuery: "jquery",
             "window.jQuery": "jquery"
         }),
-        new CopyPlugin([
-            {from: './src/images', to: './images'},
-            {from: './src/fonts', to: './fonts'}
-        ]),
+
+        new CopyPlugin({
+            patterns: [
+                { from: './src/images', to: 'images' },
+                { from: './src/fonts', to: 'fonts' },
+            ],
+        })
     ]
 
 };
