@@ -66,6 +66,7 @@ let conf = {
                     {
                         loader: 'postcss-loader',
                         options: {
+                            postcssOptions: {
                             plugins: [
                                 postcssclick(),
                                 cssnext(),
@@ -73,6 +74,7 @@ let conf = {
                                 animation()
                             ],
                             sourceMap: true,
+                            }
                         }
                     },
                     {

@@ -5,11 +5,9 @@ $colorPink: #e4245d;
 $colorGreen: #6cbb00;
 $colorBlue: #00b2ee;
 $colorYellow: #ffe326;
-
 // Color
 $colorExtraLightGray: #f9f9f9;
 $colorLightGray: #f7f7f7;
-
 $colorDarkGray: #e6e7e8;
 $colorExtraDarkGray: #9fa8b0;
 $colorExtraExtraLightPurple: #dfd6ef;
@@ -70,16 +68,11 @@ $desctop-xs: 1060px;
   }
 }
 
-
-
-
-
 @mixin max-width-landscape-phones {
   @media (max-width: #{$landscape-phones}) {
     @content;
   }
 }
-
 
 @mixin max-width-desctop {
   @media (max-width: #{$desctop}) {
@@ -143,14 +136,53 @@ $desctop-xs: 1060px;
     font-size: $f-max;
   }
 }
+@mixin pBottom($f-min, $f-max, $w-min, $w-max, $fallback: false) {
 
+  padding-bottom: $f-min;
+
+  @media (min-width: $w-min) {
+    @if ($fallback) {
+      padding-bottom: $fallback;
+    }
+    padding-bottom: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+  }
+  @media (min-width: $w-max) {
+    padding-bottom: $f-max;
+  }
+}
+@mixin mBottom($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+  margin-bottom: $f-min;
+
+  @media (min-width: $w-min) {
+    @if ($fallback) {
+      margin-bottom: $fallback;
+    }
+    margin-bottom: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+  }
+  @media (min-width: $w-max) {
+    margin-bottom: $f-max;
+  }
+}
+@mixin mTop($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+  margin-top: $f-min;
+
+  @media (min-width: $w-min) {
+    @if ($fallback) {
+      margin-top: $fallback;
+    }
+    margin-top: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+  }
+  @media (min-width: $w-max) {
+    margin-top: $f-max;
+  }
+}
 
 .button:click .back{
-
   @action toggle-class("animated bounce");
 
 }
-
 
 .back{
   width: 250px;
@@ -163,5 +195,3 @@ $desctop-xs: 1060px;
   animation-name: fadeInLeft;
   margin-left: 100px; animation: fadeInLeft .6s linear;
 }
-
-
